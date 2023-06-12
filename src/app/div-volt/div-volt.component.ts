@@ -10,6 +10,11 @@ export class DivVoltComponent {
   rc: number = 0;
   re: number = 0;
   vcc: number = 0;
+  r1Toma: number = 0;
+  r2Toma: number = 0;
+  rcToma: number = 0;
+  reToma: number = 0;
+
   ICSat: number = 0;
   calculado = false;
   aproximacion = false;
@@ -42,7 +47,7 @@ export class DivVoltComponent {
       },
       {
         nombre: "PRUEBA",
-        beta: 110,
+        beta: 135.135,
         imagen: 'assets/mps2222a.jpg'
       }
     ]
@@ -76,6 +81,13 @@ export class DivVoltComponent {
   VBAprox: number = 0;
 
   calcular(): void {
+
+    this.r1=this.r1Toma;
+    this.r2=this.r2Toma;
+    this.rc=this.rcToma;
+    this.re=this.reToma;
+
+
     this.calculado = true;
     console.log(this.r1)
     console.log(this.r2)
@@ -84,22 +96,22 @@ export class DivVoltComponent {
     console.log(this.vcc)
     console.log(this.VE)
     console.log(this.VB)
-    
+
     this.transistorSelec = this.transistores[parseInt(this.Selec, 10)];
-    
+
     console.log(this.transistorSelec)
     console.log(this.Selec)
 
-     if (this.r1 == 0 && this.r2 == 0 && this.rc == 0 && this.re == 0) {
-      this.IeQ=this.IcQ;
-      this.re=this.VE/this.IcQ;
-      this.VRC=this.vcc-this.VCEQ-this.VE;
+    if (this.r1 == 0 && this.r2 == 0 && this.rc == 0 && this.re == 0) {
+      this.IeQ = this.IcQ;
+      this.re = this.VE / this.IcQ;
+      this.VRC = this.vcc - this.VCEQ - this.VE;
       this.VC = this.VCEQ + this.VRE;
-      this.rc=this.VRC/this.IcQ;
-      this.VB=this.VE+this.VBE;
-      this.r2=(this.transistorSelec.beta*this.re)/10;
-      this.r1=((this.vcc*this.r2)/this.VB)-this.r2;
-      this.IbQ=this.IcQ/this.transistorSelec.beta;
+      this.rc = this.VRC / this.IcQ;
+      this.VB = this.VE + this.VBE;
+      this.r2 = (this.transistorSelec.beta * this.re) / 10;
+      this.r1 = ((this.vcc * this.r2) / this.VB) - this.r2;
+      this.IbQ = this.IcQ / this.transistorSelec.beta;
       this.ICSat = this.vcc / (this.rc + this.re);
 
     } else {
@@ -201,7 +213,7 @@ export class DivVoltComponent {
     this.VCAprox = 0;
     this.VBAprox = 0;
     this.VEAprox = 0;
-    this.ICSat=0;
+    this.ICSat = 0;
 
   }
 

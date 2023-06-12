@@ -9,7 +9,7 @@
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">R1</span>
           <input
             type="number"
-            [(ngModel)]="r1"
+            [(ngModel)]="r1Toma"
             class="form-control"
             placeholder="Resistencia1"
             aria-label="Resistencia1"
@@ -18,7 +18,7 @@
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">R2</span>
           <input
             type="number"
-            [(ngModel)]="r2"
+            [(ngModel)]="r2Toma"
             class="form-control"
             placeholder="Resistencia2"
             aria-label="Resistencia2"
@@ -31,7 +31,7 @@
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">RC</span>
           <input
             type="number"
-            [(ngModel)]="rc"
+            [(ngModel)]="rcToma"
             class="form-control"
             placeholder="ResistenciaC"
             aria-label="ResistenciaC"
@@ -39,7 +39,7 @@
           />
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">RE</span>
           <input
-          [(ngModel)]="re"
+          [(ngModel)]="reToma"
             type="number"
             class="form-control"
             placeholder="ResistenciaE"
@@ -174,10 +174,10 @@
             <tbody>
               <tr>
                 <th scope="row">Resultado</th>
-                <td>{{r1/1000 +" kΩ"}}</td>
-                <td>{{r2/1000 +" kΩ"}}</td>
-                <td>{{rc/1000 +" kΩ"}}</td>
-                <td>{{re/1000 +" kΩ"}}</td>
+                <td>{{(r1/1000).toFixed(3) +" kΩ"}}</td>
+                <td>{{(r2/1000).toFixed(3) +" kΩ"}}</td>
+                <td>{{(rc/1000).toFixed(3) +" kΩ"}}</td>
+                <td>{{(re/1000).toFixed(3) +" kΩ"}}</td>
                 <th scope="row">{{(ICSat*1000).toFixed(3)+" mA" }}</th>
               </tr>
               
@@ -214,7 +214,7 @@
             </tbody>
           </table>
       </div>
-      <h1 style="text-align: center;">Metodo Aproximacion</h1>
+      <h1 style="text-align: center;">Método Aproximación</h1>
       <div class="mb-3">
         <div *ngIf="aproximacion; else noAprox">
             <table class="table">
