@@ -5,8 +5,8 @@
       <!-- formulario aqui -->
 
       <div class="mb-3">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">R1</span>
+        <div class="input-group mb-3">
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping">R1</span>
           <input
             type="number"
             [(ngModel)]="r1"
@@ -15,11 +15,7 @@
             aria-label="Resistencia1"
             aria-describedby="addon-wrapping"
           />
-        </div>
-      </div>
-      <div class="mb-3">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">R2</span>
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping">R2</span>
           <input
             type="number"
             [(ngModel)]="r2"
@@ -31,8 +27,8 @@
         </div>
       </div>
       <div class="mb-3">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">RC</span>
+        <div class="input-group mb-3">
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping">RC</span>
           <input
             type="number"
             [(ngModel)]="rc"
@@ -41,12 +37,7 @@
             aria-label="ResistenciaC"
             aria-describedby="addon-wrapping"
           />
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">RE</span>
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping">RE</span>
           <input
           [(ngModel)]="re"
             type="number"
@@ -57,9 +48,10 @@
           />
         </div>
       </div>
+
       <div class="mb-3">
         <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">VCC</span>
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCC</span>
           <input
           [(ngModel)]="vcc"
             type="number"
@@ -76,7 +68,7 @@
           <option value="1">TIP41C</option>
           <option value="2">PRUEBA</option>
         </select>
-        <label class="input-group-text" for="inputGroupSelect02"
+        <label class="input-group-text text-light bg-dark" for="inputGroupSelect02"
           >Transistor</label
         >
       </div>
@@ -84,7 +76,7 @@
         <label for="">Agregar mas datos (por si no se tienen las resistencias): </label>
         <div class="mb-3">
             <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping">VCEQ</span>
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCEQ</span>
               <input
               [(ngModel)]="VCEQ"
                 type="number"
@@ -97,7 +89,7 @@
           </div>
         <div class="mb-3">
             <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping">IcQ</span>
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
               <input
               [(ngModel)]="IcQ"
                 type="number"
@@ -110,7 +102,7 @@
           </div>
         <div class="mb-3">
             <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping">VE</span>
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">VE</span>
               <input
               [(ngModel)]="VE"
                 type="number"
