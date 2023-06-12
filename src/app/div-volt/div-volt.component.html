@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6">
+      <h1 style="text-align: center;">Divistor de voltaje</h1>
+      <!-- formulario aqui -->
+
+      <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">R1</span>
+          <input
+            type="number"
+            [(ngModel)]="r1"
+            class="form-control"
+            placeholder="Resistencia1"
+            aria-label="Resistencia1"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">R2</span>
+          <input
+            type="number"
+            [(ngModel)]="r2"
+            class="form-control"
+            placeholder="Resistencia2"
+            aria-label="Resistencia2"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">RC</span>
+          <input
+            type="number"
+            [(ngModel)]="rc"
+            class="form-control"
+            placeholder="ResistenciaC"
+            aria-label="ResistenciaC"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">RE</span>
+          <input
+          [(ngModel)]="re"
+            type="number"
+            class="form-control"
+            placeholder="ResistenciaE"
+            aria-label="ResistenciaE"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping">VCC</span>
+          <input
+          [(ngModel)]="vcc"
+            type="number"
+            class="form-control"
+            placeholder="VoltajeCC"
+            aria-label="VoltajeCC"
+            aria-describedby="addon-wrapping"
+          />
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <select class="form-select" [(ngModel)]="Selec" id="inputGroupSelect02">
+          <option value="0">MPS2222A</option>
+          <option value="1">TIP41C</option>
+        </select>
+        <label class="input-group-text" for="inputGroupSelect02"
+          >Transistor</label
+        >
+      </div>
+      <div class="d-grid gap-2">
+        <button
+          type="button"
+          (click)="calcular()"
+          class="btn btn-success btn-lg"
+        >
+          Calcular
+        </button>
+      </div>
+
+      <br />
+      <br />
+      <div class="mb-3" *ngIf="calculado">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                [src]="transistorSelec.imagen"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">{{transistorSelec.nombre}}</h3>
+                <h5 class="card-text">Beta: {{transistorSelec.beta}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <h1 style="text-align: center;">Resultados</h1>
+      <!-- RESULTADOS AQUI -->
+    </div>
+  </div>
+</div>
