@@ -1,1 +1,22 @@
-<p>emisor works!</p>
+<div class="wrapper">
+    <div class="body">
+        <h1>emisor</h1>
+        <form (ngSubmit)="resistencias()" [formGroup]="calcular">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" formControlName="rb" id="floatingInput" placeholder="Rb">
+                <label for="floatingInput">Rb</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" formControlName="rc" id="floatingInput" placeholder="Rc">
+                <label for="floatingInput">Rc</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" formControlName="re" id="floatingInput" placeholder="Re">
+                <label for="floatingInput">Re</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg" type="submit">Button</button>
+            </div>
+        </form>
+    </div>
+</div>
