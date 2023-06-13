@@ -28,36 +28,50 @@ export class DivVoltComponent {
   ICSat: number = 0;
   calculado = false;
   aproximacion = false;
+  resultado = false;
+  mensaje = false;
   transistores: [
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
   ] = [
       {
         nombre: "MPS2222A",
         beta: 240,
+        maxVCE:40,
+        maxIc:0.6,
         imagen: 'assets/mps2222a.jpg'
       },
       {
         nombre: "TIP41C",
         beta: 143,
+        maxVCE:40,
+        maxIc:6,
         imagen: 'assets/TIP41C.jpg'
       },
       {
         nombre: "PRUEBA",
-        beta: 225,
+        beta: 80,
+        maxVCE:40,
+        maxIc:0.6,
         imagen: 'assets/mps2222a.jpg'
       }
     ]
@@ -123,20 +137,6 @@ export class DivVoltComponent {
 
     if (this.r1 == 0 && this.r2 == 0 && this.rc == 0 && this.re == 0) {
 
-      // if ( this.IbQ==0 && this.VC==0 ) {
-      //   //calcular resistencias solo con ic, vcc vce y ve
-      //   this.IeQ=this.IcQ;
-      //   this.re=this.VE/this.IeQ;
-      //   this.VC=this.vcc-this.VCEQ-this.VE;
-      //   this.rc=this.VC/this.IcQ;
-
-      //   this.VB=this.VE+this.VBE;
-      //   this.r2 = (this.transistorSelec.beta * this.re) / 10;
-        
-
-
-      // }
-
       this.IeQ = this.IcQ;
       this.re = this.VE / this.IcQ;
       this.VRC = this.vcc - this.VCEQ - this.VE;
@@ -148,7 +148,12 @@ export class DivVoltComponent {
       this.IbQ = this.IcQ / this.transistorSelec.beta;
       this.ICSat = this.vcc / (this.rc + this.re);
 
-
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+        this.mensaje=true;
+      }else{
+        this.resultado=true;
+      }
 
     } else if (this.r1 == 0) {
       if (this.IbQ != 0) {
@@ -169,6 +174,14 @@ export class DivVoltComponent {
         console.log(vr1);
 
         this.r1 = vr1 / ir1;
+        this.ICSat = this.vcc / (this.rc + this.re);
+
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+        this.mensaje=true;
+      }else{
+        this.resultado=true;
+      }
       }
 
 
@@ -198,7 +211,13 @@ export class DivVoltComponent {
 
       this.VB = this.VE + this.VBE;
 
-
+      
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+          this.mensaje=true;
+      }else{
+        this.resultado=true;
+      }
 
 
       console.log(this.VTH);
@@ -276,6 +295,8 @@ export class DivVoltComponent {
     this.VBToma = 0;
     this.VEToma = 0;
     this.aproximacion = false;
+    this.mensaje = false;
+    this.resultado = false;
     this.IbQAprox = 0;
     this.IcQAprox = 0;
     this.IeQAprox = 0;
