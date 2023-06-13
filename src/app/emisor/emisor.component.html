@@ -1,42 +1,157 @@
 <div class="wrapper">
     <div class="body">
-        <h1>emisor</h1>
+        <h1>polarización de emisor</h1>
+        <label class="mb-3">Seleccione datos con que trabajar</label>
         <form (ngSubmit)="resistencias()" [formGroup]="calcular">
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" formControlName="rb" id="floatingInput" placeholder="Rb">
-                <label for="floatingInput">Rb</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" formControlName="rc" id="floatingInput" placeholder="Rc">
-                <label for="floatingInput">Rc</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" formControlName="re" id="floatingInput" placeholder="Re">
-                <label for="floatingInput">Re</label>
-            </div>
-            <div class="vcc">
-                <div class="form-check form-switch">
-                    <input (change)="desactivaVcc()"  class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <div class="VRI">
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('rb')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="rb" id="floatingInput"
+                            placeholder="Rb">
+                        <label for="floatingInput">Rb (&Omega;)</label>
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" formControlName="vcc" id="floatingInput"
-                        placeholder="Vcc">
-                    <label for="floatingInput">Vcc</label>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('rc')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="rc" id="floatingInput"
+                            placeholder="Rc">
+                        <label for="floatingInput">Rc (&Omega;)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('re')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="re" id="floatingInput"
+                            placeholder="Re">
+                        <label for="floatingInput">Re (&Omega;)</label>
+                    </div>
                 </div>
             </div>
-            <div class="vcc">
-                <div class="form-check form-switch">
-                    <input (change)="desactivaB()"  class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+
+
+            <div class="VRI">
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('vb')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="vb" id="floatingInput"
+                            placeholder="Vb">
+                        <label for="floatingInput">Vb (V)</label>
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" formControlName="B" id="floatingInput"
-                        placeholder="Vcc">
-                    <label for="floatingInput">&#946;</label>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('vc')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="vc" id="floatingInput"
+                            placeholder="Vc">
+                        <label for="floatingInput">Vc (V)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('ve')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="ve" id="floatingInput"
+                            placeholder="Ve">
+                        <label for="floatingInput">Ve (V)</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="VRI">
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('ib')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="ib" id="floatingInput"
+                            placeholder="Ib">
+                        <label for="floatingInput">Ib (&mu;A)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('ic')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="ic" id="floatingInput"
+                            placeholder="Ic">
+                        <label for="floatingInput">Ic (&mu;A)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('ie')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="ie" id="floatingInput"
+                            placeholder="Ie">
+                        <label for="floatingInput">Ie (&mu;A)</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="VRI">
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('vcc')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="vcc" id="floatingInput"
+                            placeholder="Vcc">
+                        <label for="floatingInput">Vcc (V)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('vce')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="vce" id="floatingInput"
+                            placeholder="Vce">
+                        <label for="floatingInput">Vce (V)</label>
+                    </div>
+                </div>
+                <div class="vcc">
+                    <div class="form-check form-switch">
+                        <input (change)="desactiva('B')" class="form-check-input" type="checkbox"
+                            id="flexSwitchCheckChecked">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" formControlName="B" id="floatingInput"
+                            placeholder="B">
+                        <label for="floatingInput">&#946;</label>
+                    </div>
                 </div>
             </div>
 
             <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" type="submit">Button</button>
+                <button class="btn btn-primary btn-lg" type="submit">Calcular</button>
             </div>
         </form>
     </div>
