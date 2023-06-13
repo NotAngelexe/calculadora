@@ -7,59 +7,29 @@
       <div class="mb-3">
         <div class="input-group mb-3">
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">R1</span>
-          <input
-            type="number"
-            [(ngModel)]="r1Toma"
-            class="form-control"
-            placeholder="Resistencia1"
-            aria-label="Resistencia1"
-            aria-describedby="addon-wrapping"
-          />
+          <input type="number" [(ngModel)]="r1Toma" class="form-control" placeholder="Resistencia1"
+            aria-label="Resistencia1" aria-describedby="addon-wrapping" />
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">R2</span>
-          <input
-            type="number"
-            [(ngModel)]="r2Toma"
-            class="form-control"
-            placeholder="Resistencia2"
-            aria-label="Resistencia2"
-            aria-describedby="addon-wrapping"
-          />
+          <input type="number" [(ngModel)]="r2Toma" class="form-control" placeholder="Resistencia2"
+            aria-label="Resistencia2" aria-describedby="addon-wrapping" />
         </div>
       </div>
       <div class="mb-3">
         <div class="input-group mb-3">
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">RC</span>
-          <input
-            type="number"
-            [(ngModel)]="rcToma"
-            class="form-control"
-            placeholder="ResistenciaC"
-            aria-label="ResistenciaC"
-            aria-describedby="addon-wrapping"
-          />
+          <input type="number" [(ngModel)]="rcToma" class="form-control" placeholder="ResistenciaC"
+            aria-label="ResistenciaC" aria-describedby="addon-wrapping" />
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">RE</span>
-          <input
-          [(ngModel)]="reToma"
-            type="number"
-            class="form-control"
-            placeholder="ResistenciaE"
-            aria-label="ResistenciaE"
-            aria-describedby="addon-wrapping"
-          />
+          <input [(ngModel)]="reToma" type="number" class="form-control" placeholder="ResistenciaE"
+            aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
         </div>
       </div>
 
       <div class="mb-3">
         <div class="input-group flex-nowrap">
           <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCC</span>
-          <input
-          [(ngModel)]="vcc"
-            type="number"
-            class="form-control"
-            placeholder="VoltajeCC"
-            aria-label="VoltajeCC"
-            aria-describedby="addon-wrapping"
-          />
+          <input [(ngModel)]="vcc" type="number" class="form-control" placeholder="VoltajeCC" aria-label="VoltajeCC"
+            aria-describedby="addon-wrapping" />
         </div>
       </div>
       <div class="input-group mb-3">
@@ -68,66 +38,38 @@
           <option value="1">TIP41C</option>
           <option value="2">PRUEBA</option>
         </select>
-        <label class="input-group-text text-light bg-dark" for="inputGroupSelect02"
-          >Transistor</label
-        >
+        <label class="input-group-text text-light bg-dark" for="inputGroupSelect02">Transistor</label>
       </div>
       <div class="mb-3">
         <label for="">Agregar mas datos (por si no se tienen las resistencias): </label>
         <div class="mb-3">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCEQ</span>
-              <input
-              [(ngModel)]="VCEQ"
-                type="number"
-                class="form-control"
-                placeholder="ResistenciaE"
-                aria-label="ResistenciaE"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCEQ</span>
+            <input [(ngModel)]="VCEQ" type="number" class="form-control" placeholder="ResistenciaE"
+              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
           </div>
+        </div>
         <div class="mb-3">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
-              <input
-              [(ngModel)]="IcQ"
-                type="number"
-                class="form-control"
-                placeholder="ResistenciaE"
-                aria-label="ResistenciaE"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
+            <input [(ngModel)]="IcQ" type="number" class="form-control" placeholder="ResistenciaE"
+              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
           </div>
+        </div>
         <div class="mb-3">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text text-light bg-dark" id="addon-wrapping">VE</span>
-              <input
-              [(ngModel)]="VE"
-                type="number"
-                class="form-control"
-                placeholder="ResistenciaE"
-                aria-label="ResistenciaE"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping">VE</span>
+            <input [(ngModel)]="VE" type="number" class="form-control" placeholder="ResistenciaE"
+              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
           </div>
-        
+        </div>
+
       </div>
       <div class="d-grid gap-2">
-        <button
-          type="button"
-          (click)="calcular()"
-          class="btn btn-success btn-lg"
-        >
+        <button type="button" (click)="calcular()" class="btn btn-success btn-lg">
           Calcular
         </button>
-        <button
-          type="button"
-          (click)="limpiarDatos()"
-          class="btn btn-danger btn-lg"
-        >
+        <button type="button" (click)="limpiarDatos()" class="btn btn-danger btn-lg">
           Limpiar
         </button>
       </div>
@@ -138,11 +80,7 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-md-4">
-              <img
-                [src]="transistorSelec.imagen"
-                class="img-fluid rounded-start"
-                alt="..."
-              />
+              <img [src]="transistorSelec.imagen" class="img-fluid rounded-start" alt="..." />
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -158,36 +96,76 @@
       <h1 style="text-align: center;">Resultados</h1>
       <div class="mb-3">
         <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col" colspan="5" style="text-align: center;"><h5>Resistencias</h5></th>
-                </tr>
-              <tr>
-                <th scope="col">Variable</th>
-                <th scope="col">R1</th>
-                <th scope="col">R2</th>
-                <th scope="col">RC</th>
-                <th scope="col">RE</th>
-                <th scope="col">ICSat</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Resultado</th>
-                <td>{{(r1/1000).toFixed(3) +" kΩ"}}</td>
-                <td>{{(r2/1000).toFixed(3) +" kΩ"}}</td>
-                <td>{{(rc/1000).toFixed(3) +" kΩ"}}</td>
-                <td>{{(re/1000).toFixed(3) +" kΩ"}}</td>
-                <th scope="row">{{(ICSat*1000).toFixed(3)+" mA" }}</th>
-              </tr>
-              
-            </tbody>
-          </table>
+          <thead>
+            <tr>
+              <th scope="col" colspan="5" style="text-align: center;">
+                <h5>Resistencias</h5>
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">Variable</th>
+              <th scope="col">R1</th>
+              <th scope="col">R2</th>
+              <th scope="col">RC</th>
+              <th scope="col">RE</th>
+              <th scope="col">ICSat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Resultado</th>
+              <td>{{(r1/1000).toFixed(3) +" kΩ"}}</td>
+              <td>{{(r2/1000).toFixed(3) +" kΩ"}}</td>
+              <td>{{(rc/1000).toFixed(3) +" kΩ"}}</td>
+              <td>{{(re/1000).toFixed(3) +" kΩ"}}</td>
+              <th scope="row">{{(ICSat*1000).toFixed(3)+" mA" }}</th>
+            </tr>
+
+          </tbody>
+        </table>
         <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" colspan="8" style="text-align: center;">
+                <h5>Corrientes y voltajes</h5>
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">Variable</th>
+              <th scope="col">IbQ</th>
+              <th scope="col">IcQ</th>
+              <th scope="col">Ie</th>
+              <th scope="col">VCE</th>
+              <th scope="col">VC</th>
+              <th scope="col">VB</th>
+              <th scope="col">VE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Resultado</th>
+              <td>{{(IbQ*1000000).toFixed(3)+" µA"}}</td>
+              <td>{{(IcQ*1000).toFixed(3)+" mA" }}</td>
+              <td>{{(IeQ*1000).toFixed(3)+" mA" }}</td>
+              <td>{{VCEQ.toFixed(3) + " V"}}</td>
+              <td>{{VC.toFixed(3)+ " V"}}</td>
+              <td>{{VB.toFixed(3)+ " V"}}</td>
+              <td>{{VE.toFixed(3)+ " V"}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <h1 style="text-align: center;">Método Aproximación</h1>
+      <div class="mb-3">
+        <div *ngIf="aproximacion; else noAprox">
+          <table class="table">
             <thead>
-                <tr>
-                    <th scope="col" colspan="8" style="text-align: center;"><h5>Corrientes y voltajes</h5></th>
-                </tr>
+              <tr>
+                <th scope="col" colspan="8" style="text-align: center;">
+                  <h5>Corrientes y voltajes</h5>
+                </th>
+              </tr>
               <tr>
                 <th scope="col">Variable</th>
                 <th scope="col">IbQ</th>
@@ -202,57 +180,23 @@
             <tbody>
               <tr>
                 <th scope="row">Resultado</th>
-                <td>{{(IbQ*1000000).toFixed(3)+" µA"}}</td>
-                <td>{{(IcQ*1000).toFixed(3)+" mA" }}</td>
-                <td>{{(IeQ*1000).toFixed(3)+" mA" }}</td>
-                <td>{{VCEQ.toFixed(3) + " V"}}</td>
-                <td>{{VC.toFixed(3)+ " V"}}</td>
-                <td>{{VB.toFixed(3)+ " V"}}</td>
-                <td>{{VE.toFixed(3)+ " V"}}</td>
+                <td>{{(IbQAprox*1000000).toFixed(3)+" µA"}}</td>
+                <td>{{(IcQAprox*1000).toFixed(3)+" mA" }}</td>
+                <td>{{(IeQAprox*1000).toFixed(3)+" mA" }}</td>
+                <td>{{VCEQAprox.toFixed(3) + " V"}}</td>
+                <td>{{VCAprox.toFixed(3)+ " V"}}</td>
+                <td>{{VBAprox.toFixed(3)+ " V"}}</td>
+                <td>{{VEAprox.toFixed(3)+ " V"}}</td>
               </tr>
 
             </tbody>
           </table>
-      </div>
-      <h1 style="text-align: center;">Método Aproximación</h1>
-      <div class="mb-3">
-        <div *ngIf="aproximacion; else noAprox">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="8" style="text-align: center;"><h5>Corrientes y voltajes</h5></th>
-                    </tr>
-                  <tr>
-                    <th scope="col">Variable</th>
-                    <th scope="col">IbQ</th>
-                    <th scope="col">IcQ</th>
-                    <th scope="col">Ie</th>
-                    <th scope="col">VCE</th>
-                    <th scope="col">VC</th>
-                    <th scope="col">VB</th>
-                    <th scope="col">VE</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Resultado</th>
-                    <td>{{(IbQAprox*1000000).toFixed(3)+" µA"}}</td>
-                    <td>{{(IcQAprox*1000).toFixed(3)+" mA" }}</td>
-                    <td>{{(IeQAprox*1000).toFixed(3)+" mA" }}</td>
-                    <td>{{VCEQAprox.toFixed(3) + " V"}}</td>
-                    <td>{{VCAprox.toFixed(3)+ " V"}}</td>
-                    <td>{{VBAprox.toFixed(3)+ " V"}}</td>
-                    <td>{{VEAprox.toFixed(3)+ " V"}}</td>
-                  </tr>
-    
-                </tbody>
-              </table>
         </div>
 
         <ng-template #noAprox>
-            <div class="alert alert-danger" *ngIf="calculado" role="alert">
-                No se puede aplicar metodo de aproximacion!
-              </div>
+          <div class="alert alert-danger" *ngIf="calculado" role="alert">
+            No se puede aplicar metodo de aproximacion!
+          </div>
         </ng-template>
       </div>
     </div>
