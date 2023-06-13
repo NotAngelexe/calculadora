@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-6">
-      <h1 style="text-align: center;">Divistor de voltaje</h1>
+      <h1 style="text-align: center;">Divisor de voltaje</h1>
       <!-- formulario aqui -->
 
       <div class="mb-3">
@@ -75,36 +75,56 @@
       <div class="mb-3">
         <label for="">Agregar mas datos (por si no se tienen las resistencias): </label>
         <div class="mb-3">
-            <div class="input-group flex-nowrap">
+            <div class="input-group mb-3">
               <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCEQ</span>
               <input
-              [(ngModel)]="VCEQ"
+              [(ngModel)]="VCEQToma"
                 type="number"
                 class="form-control"
                 placeholder="ResistenciaE"
                 aria-label="ResistenciaE"
                 aria-describedby="addon-wrapping"
               />
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
+              <input
+              [(ngModel)]="IcQToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+
             </div>
           </div>
         <div class="mb-3">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
+            <div class="input-group mb-3">
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">IbQ (en micro)</span>
               <input
-              [(ngModel)]="IcQ"
+              [(ngModel)]="IbQToma"
                 type="number"
                 class="form-control"
                 placeholder="ResistenciaE"
                 aria-label="ResistenciaE"
                 aria-describedby="addon-wrapping"
               />
+              <span class="input-group-text text-light bg-dark" id="addon-wrapping">VC</span>
+              <input
+              [(ngModel)]="VCToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+
             </div>
           </div>
         <div class="mb-3">
             <div class="input-group flex-nowrap">
               <span class="input-group-text text-light bg-dark" id="addon-wrapping">VE</span>
               <input
-              [(ngModel)]="VE"
+              [(ngModel)]="VEToma"
                 type="number"
                 class="form-control"
                 placeholder="ResistenciaE"
@@ -154,13 +174,13 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-6 resultados">
       <h1 style="text-align: center;">Resultados</h1>
       <div class="mb-3">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col" colspan="5" style="text-align: center;"><h5>Resistencias</h5></th>
+                    <th scope="col" colspan="6" style="text-align: center;"><h5>Resistencias</h5></th>
                 </tr>
               <tr>
                 <th scope="col">Variable</th>
