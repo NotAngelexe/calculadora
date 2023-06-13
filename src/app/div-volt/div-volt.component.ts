@@ -15,39 +15,63 @@ export class DivVoltComponent {
   rcToma: number = 0;
   reToma: number = 0;
 
+  IbQToma: number = 0;
+  IcQToma: number = 0;
+  IeQToma: number = 0;
+  VCEQToma: number = 0;
+  VRCToma: number = 0;
+  VREToma: number = 0;
+  VCToma: number = 0;
+  VEToma: number = 0;
+  VBToma: number = 0;
+
   ICSat: number = 0;
   calculado = false;
   aproximacion = false;
+  resultado = false;
+  mensaje = false;
   transistores: [
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
     {
       nombre: string,
       beta: number,
+      maxVCE:number,
+      maxIc:number,
       imagen: string
     },
   ] = [
       {
         nombre: "MPS2222A",
         beta: 240,
+        maxVCE:40,
+        maxIc:0.6,
         imagen: 'assets/mps2222a.jpg'
       },
       {
         nombre: "TIP41C",
         beta: 143,
+        maxVCE:40,
+        maxIc:6,
         imagen: 'assets/TIP41C.jpg'
       },
       {
         nombre: "PRUEBA",
-        beta: 135.135,
+        beta: 100,
+        maxVCE:40,
+        maxIc:0.6,
         imagen: 'assets/mps2222a.jpg'
       }
     ]
@@ -82,10 +106,19 @@ export class DivVoltComponent {
 
   calcular(): void {
 
-    this.r1=this.r1Toma;
-    this.r2=this.r2Toma;
-    this.rc=this.rcToma;
-    this.re=this.reToma;
+    this.r1 = this.r1Toma;
+    this.r2 = this.r2Toma;
+    this.rc = this.rcToma;
+    this.re = this.reToma;
+
+    this.IbQ = this.IbQToma / 1000000;
+    this.IcQ = this.IcQToma;
+    this.IeQ = this.IeQToma;
+    this.VCEQ = this.VCEQToma;
+    this.VC = this.VCToma;
+    this.VB = this.VBToma;
+    this.VE = this.VEToma;
+
 
 
     this.calculado = true;
@@ -103,6 +136,7 @@ export class DivVoltComponent {
     console.log(this.Selec)
 
     if (this.r1 == 0 && this.r2 == 0 && this.rc == 0 && this.re == 0) {
+
       this.IeQ = this.IcQ;
       this.re = this.VE / this.IcQ;
       this.VRC = this.vcc - this.VCEQ - this.VE;
@@ -114,7 +148,46 @@ export class DivVoltComponent {
       this.IbQ = this.IcQ / this.transistorSelec.beta;
       this.ICSat = this.vcc / (this.rc + this.re);
 
-    } else {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+        this.mensaje=true;
+      }else{
+        this.resultado=true;
+      }
+
+    } else if (this.r1 == 0) {
+      if (this.IbQ != 0) {
+        this.IcQ = this.IbQ * this.transistorSelec.beta;
+        console.log(this.IcQ);
+        this.IeQ = this.IcQ + this.IbQ;
+        this.VE = this.IeQ * this.re;
+        this.VRC = this.IcQ * this.rc;
+        this.vcc = this.VC + this.VRC;
+        console.log(this.vcc);
+        this.VCEQ = this.VC - this.VE;
+        this.VB = this.VE + this.VBE;
+        let ir2 = this.VB / this.r2;
+        let ir1 = this.IbQ + ir2;
+        let vr1 = this.vcc - this.VE - this.VBE;
+        console.log(ir2);
+        console.log(ir1);
+        console.log(vr1);
+
+        this.r1 = vr1 / ir1;
+        this.ICSat = this.vcc / (this.rc + this.re);
+
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+        this.mensaje=true;
+        console.log("ENTRE CONDICIONES TRANSISTOR")
+      }else{
+        this.resultado=true;
+      }
+      }
+
+
+    }
+    else {
       this.ICSat = this.vcc / (this.rc + this.re);
       //Encontramos voltaje y resistencia VTH
       this.VTH = (this.vcc * this.r2) / (this.r1 + this.r2);
@@ -139,7 +212,13 @@ export class DivVoltComponent {
 
       this.VB = this.VE + this.VBE;
 
-
+      
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+        this.resultado=false;
+          this.mensaje=true;
+      }else{
+        this.resultado=true;
+      }
 
 
       console.log(this.VTH);
@@ -179,7 +258,6 @@ export class DivVoltComponent {
     this.IbQAprox = this.IcQAprox / this.transistorSelec.beta;
 
 
-
     console.log(this.IbQAprox);
     console.log(this.IcQAprox);
     console.log(this.IeQAprox);
@@ -194,6 +272,10 @@ export class DivVoltComponent {
     this.r2 = 0;
     this.rc = 0;
     this.re = 0;
+    this.r1Toma = 0;
+    this.r2Toma = 0;
+    this.rcToma = 0;
+    this.reToma = 0;
     this.vcc = 0;
     this.calculado = false;
     this.VTH = 0;
@@ -205,7 +287,16 @@ export class DivVoltComponent {
     this.VC = 0;
     this.VB = 0;
     this.VE = 0;
+    this.IbQToma = 0;
+    this.IcQToma = 0;
+    this.IeQToma = 0;
+    this.VCEQToma = 0;
+    this.VCToma = 0;
+    this.VBToma = 0;
+    this.VEToma = 0;
     this.aproximacion = false;
+    this.mensaje = false;
+    this.resultado = false;
     this.IbQAprox = 0;
     this.IcQAprox = 0;
     this.IeQAprox = 0;
