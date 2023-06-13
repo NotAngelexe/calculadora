@@ -258,7 +258,6 @@ export class DivVoltComponent {
     this.IbQAprox = this.IcQAprox / this.transistorSelec.beta;
 
 
-
     console.log(this.IbQAprox);
     console.log(this.IcQAprox);
     console.log(this.IeQAprox);
