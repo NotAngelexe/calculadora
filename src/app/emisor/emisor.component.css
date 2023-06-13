@@ -1,0 +1,18 @@
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.body {
+    width: 100%;
+    max-width: 550px;
+}
+.vcc {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+.VRI{
+    display: flex;
+}
