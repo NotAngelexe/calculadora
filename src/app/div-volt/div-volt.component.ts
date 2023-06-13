@@ -69,7 +69,7 @@ export class DivVoltComponent {
       },
       {
         nombre: "PRUEBA",
-        beta: 80,
+        beta: 100,
         maxVCE:40,
         maxIc:0.6,
         imagen: 'assets/mps2222a.jpg'
@@ -179,6 +179,7 @@ export class DivVoltComponent {
       if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
         this.resultado=false;
         this.mensaje=true;
+        console.log("ENTRE CONDICIONES TRANSISTOR")
       }else{
         this.resultado=true;
       }
