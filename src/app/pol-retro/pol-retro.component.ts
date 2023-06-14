@@ -104,11 +104,14 @@ export class PolRetroComponent implements OnInit {
     console.log("Voltaje en b", this.Vb);
     //Calculando VRC
     this.Vrc=(this.Ic)*(this.Rc);
+    console.log("voltaje rc", this.Vrc)
     console.log("Voltaje en c", this.Vrc);
     //Calculando IE
     this.Ie=this.Ib+this.Ic;
     console.log("Corriente en e", this.Ie);
+    //calculando vce
     this.Vce= this.vcc-this.Vrc;
+    console.log("Voltaje vce",this.Vce)
   }
   
 }
