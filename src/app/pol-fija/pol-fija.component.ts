@@ -111,7 +111,7 @@ export class PolFijaComponent {
       this.Rb= (this.vcc-this.VBE)/this.IbQ;
       this.IeQ= this.IcQ+this.IbQ;
 
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE||this.VCEQ<0) {
         this.resultado=false;
         this.mensaje=true;
         console.log("ENTRE CONDICIONES TRANSISTOR")
@@ -132,7 +132,7 @@ export class PolFijaComponent {
       }
       this.Rb= (this.vcc-this.VBE)/this.IbQ;
       this.VB= this.VBE;
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE ||this.VCEQ<0) {
         this.resultado=false;
         this.mensaje=true;
         console.log("ENTRE CONDICIONES TRANSISTOR")
@@ -156,7 +156,7 @@ export class PolFijaComponent {
       
       this.ICSat=this.vcc/this.Rc;
       
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE||this.VCEQ<0) {
         this.resultado=false;
         this.mensaje=true;
         console.log("ENTRE CONDICIONES TRANSISTOR")

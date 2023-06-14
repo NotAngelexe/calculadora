@@ -148,7 +148,7 @@ export class DivVoltComponent {
       this.IbQ = this.IcQ / this.transistorSelec.beta;
       this.ICSat = this.vcc / (this.rc + this.re);
 
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE ||this.VCEQ<0) {
         this.resultado=false;
         this.mensaje=true;
       }else{
@@ -176,7 +176,7 @@ export class DivVoltComponent {
         this.r1 = vr1 / ir1;
         this.ICSat = this.vcc / (this.rc + this.re);
 
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE||this.VCEQ<0) {
         this.resultado=false;
         this.mensaje=true;
         console.log("ENTRE CONDICIONES TRANSISTOR")
@@ -213,7 +213,7 @@ export class DivVoltComponent {
       this.VB = this.VE + this.VBE;
 
       
-      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE) {
+      if (this.ICSat>this.transistorSelec.maxIc || this.VCEQ> this.transistorSelec.maxVCE ||this.VCEQ<0) {
         this.resultado=false;
           this.mensaje=true;
       }else{
