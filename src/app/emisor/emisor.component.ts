@@ -12,6 +12,7 @@ export class EmisorComponent implements OnInit {
   total: number = 0;
 
   resultados: boolean = false;
+  valoresAltos: boolean = false;
 
   Brb: boolean = false;
   Brc: boolean = false;
@@ -152,31 +153,23 @@ export class EmisorComponent implements OnInit {
 
     this.recursiva(1);
 
-    this.resultados = true;
 
     console.log("fin: " + this.total);
 
-    console.log("ib: " + this.ib);
-    console.log("ic: " + this.ic);
-    console.log("ie: " + this.ie);
-
-    console.log("vb: " + this.vb);
-    console.log("vc: " + this.vc);
-    console.log("ve: " + this.ve);
-
-    console.log("rb: " + this.rb);
-    console.log("rc: " + this.rc);
-    console.log("re: " + this.re);
-
-    console.log("vcc: " + this.vcc);
-    console.log("vce: " + this.vce);
-    console.log("B: " + this.B);
   }
 
   recursiva(cont: number) {
     if (this.Bvce && this.vce > this.maxVCE) {
+      this.valoresAltos = true;
+      setTimeout(() => {
+        this.valoresAltos = false;
+      }, 1500);
       return;
     } else if (this.Bic && this.ic > this.maxIC) {
+      this.valoresAltos = true;
+      setTimeout(() => {
+        this.valoresAltos = false;
+      }, 1500);
       return;
     }
     cont++;
@@ -349,8 +342,10 @@ export class EmisorComponent implements OnInit {
       }
     }
 
-    if (this.total < 13)
+    if (this.total < 13){
+      this.resultados = true;
       this.recursiva(cont);
+    }
   }
 
   desactiva(cual: string) {
