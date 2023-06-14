@@ -44,8 +44,7 @@ export class PolRetroComponent implements OnInit {
 
   aux: number = 0;
   aux2: number = 0;
-
-
+  sum: number=0;
 
   constructor() {
   }
@@ -82,12 +81,15 @@ export class PolRetroComponent implements OnInit {
     
     //calculando IB
     if(this.beta===null || this.beta===0){
-      this.aux = this.vcc-this.vbe;
-      this.aux2=this.Rb*(121)*(this.Re+this.Rc);
-      this.Ib=this.aux/this.aux2;
+      this.aux = this.vcc-0.7;
+      console.log(this.aux)
+      this.aux2=(this.Rb+((121)*(this.Re+this.Rc)))/1000;
+      console.log(this.aux2);
+      this.Ib=(this.aux/this.aux2);
       console.log("Corriente b", this.Ib);
       //calculando IC
-      this.Ic=(121)*(this.Ib);
+      this.Ic=(121*this.Ib);
+      console.log("Corriente C", this.Ic);
     }else{
       this.aux = this.vcc-this.vbe;
       this.aux2=this.Rb*(this.beta+1)*(this.Re+this.Rc);
@@ -95,6 +97,7 @@ export class PolRetroComponent implements OnInit {
       console.log("Corriente b", this.Ib);
       //calculando IC
       this.Ic=(this.beta)*(this.Ib);
+      console.log("Corriente C", this.Ic);
     }
     //Calculado VB
     this.Vb=(this.Ib)*(this.Rb);
@@ -109,37 +112,3 @@ export class PolRetroComponent implements OnInit {
   }
   
 }
-
-
-//   transistores: [
-//     {
-//       nombre: string,
-//       beta: number,
-//       maxVCE:number,
-//       maxIc:number,
-//       imagen: string
-//     },
-//     {
-//       nombre: string,
-//       beta: number,
-//       maxVCE:number,
-//       maxIc:number,
-//       imagen: string
-//     },
-//   ] = [
-//       {
-//         nombre: "MPS2222A",
-//         beta: 240,
-//         maxVCE:40,
-//         maxIc:0.6,
-//         imagen: 'assets/mps2222a.jpg'
-//       },
-//       {
-//         nombre: "TIP41C",
-//         beta: 143,
-//         maxVCE:40,
-//         maxIc:6,
-//         imagen: 'assets/TIP41C.jpg'
-//       }
-//     ]
-// }
