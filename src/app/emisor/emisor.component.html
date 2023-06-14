@@ -138,21 +138,84 @@
                     </div>
                 </div>
                 <div class="vcc">
-                    <div class="form-check form-switch">
-                        <input (change)="desactiva('B')" class="form-check-input" type="checkbox"
-                            id="flexSwitchCheckChecked">
+                    <label for="floatingInput" id="beta">&#946;</label>
+                </div>
+            </div>
+
+            <div class="VRI">
+                <div class="vcc">
+                    <div class="form-check">
+                        <input (change)="cambiaT(15,60,6)" class="form-check-input" type="radio" name="flexRadioDefault"
+                            id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            TIP41C
+                        </label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" formControlName="B" id="floatingInput"
-                            placeholder="B">
-                        <label for="floatingInput">&#946;</label>
+
+                    <div class="form-check">
+                        <input (change)="cambiaT(100,40,.6)" class="form-check-input" type="radio"
+                            name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            MPS2222A
+                        </label>
                     </div>
                 </div>
             </div>
 
-            <div class="d-grid gap-2">
+            <div class="d-grid gap-2 mb-3">
                 <button class="btn btn-primary btn-lg" type="submit">Calcular</button>
             </div>
+            <div class="d-grid gap-2 mb-3">
+                <button (click)="relo()" class="btn btn-success btn-lg" type="button">Limpiar</button>
+            </div>
         </form>
+
+        <div class="res" *ngIf="resultados">
+            <h3>RESULTADOS</h3>
+            <div class="VRI">
+                <div class="vcc">
+                    <label>Rb = {{rb.toFixed(3)}} &Omega;</label>
+                </div>
+                <div class="vcc">
+                    <label>Rc = {{rc.toFixed(3)}} &Omega;</label>
+                </div>
+                <div class="vcc">
+                    <label>Re = {{re.toFixed(3)}} &Omega;</label>
+                </div>
+            </div>
+            <div class="VRI">
+                <div class="vcc">
+                    <label>Vb = {{vb.toFixed(3)}} V</label>
+                </div>
+                <div class="vcc">
+                    <label>Vc = {{vc.toFixed(3)}} V</label>
+                </div>
+                <div class="vcc">
+                    <label>Ve = {{ve.toFixed(3)}} V</label>
+                </div>
+            </div>
+            <div class="VRI">
+                <div class="vcc">
+                    <label>Ib = {{ib.toFixed(6)}} A</label>
+                </div>
+                <div class="vcc">
+                    <label>Ic = {{ic.toFixed(6)}} A</label>
+                </div>
+                <div class="vcc">
+                    <label>Ie = {{ie.toFixed(6)}} A</label>
+                </div>
+            </div>
+            <div class="VRI">
+                <div class="vcc">
+                    <label>Vcc = {{vcc.toFixed(3)}} V</label>
+                </div>
+                <div class="vcc">
+                    <label>Vce = {{vce.toFixed(3)}} V</label>
+                </div>
+                <div class="vcc">
+                    <label>Isat = {{isat.toFixed(6)}} A</label>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
