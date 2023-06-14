@@ -1,35 +1,75 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-6">
-      <h1 style="text-align: center;">Divistor de voltaje</h1>
+      <h1 style="text-align: center;">Divisor de voltaje</h1>
       <!-- formulario aqui -->
 
       <div class="mb-3">
         <div class="input-group mb-3">
-          <span class="input-group-text text-light bg-dark" id="addon-wrapping">R1</span>
-          <input type="number" [(ngModel)]="r1Toma" class="form-control" placeholder="Resistencia1"
-            aria-label="Resistencia1" aria-describedby="addon-wrapping" />
-          <span class="input-group-text text-light bg-dark" id="addon-wrapping">R2</span>
-          <input type="number" [(ngModel)]="r2Toma" class="form-control" placeholder="Resistencia2"
-            aria-label="Resistencia2" aria-describedby="addon-wrapping" />
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+            >R1</span
+          >
+          <input
+            type="number"
+            [(ngModel)]="r1Toma"
+            class="form-control"
+            placeholder="Resistencia1"
+            aria-label="Resistencia1"
+            aria-describedby="addon-wrapping"
+          />
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+            >R2</span
+          >
+          <input
+            type="number"
+            [(ngModel)]="r2Toma"
+            class="form-control"
+            placeholder="Resistencia2"
+            aria-label="Resistencia2"
+            aria-describedby="addon-wrapping"
+          />
         </div>
       </div>
       <div class="mb-3">
         <div class="input-group mb-3">
-          <span class="input-group-text text-light bg-dark" id="addon-wrapping">RC</span>
-          <input type="number" [(ngModel)]="rcToma" class="form-control" placeholder="ResistenciaC"
-            aria-label="ResistenciaC" aria-describedby="addon-wrapping" />
-          <span class="input-group-text text-light bg-dark" id="addon-wrapping">RE</span>
-          <input [(ngModel)]="reToma" type="number" class="form-control" placeholder="ResistenciaE"
-            aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+            >RC</span
+          >
+          <input
+            type="number"
+            [(ngModel)]="rcToma"
+            class="form-control"
+            placeholder="ResistenciaC"
+            aria-label="ResistenciaC"
+            aria-describedby="addon-wrapping"
+          />
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+            >RE</span
+          >
+          <input
+            [(ngModel)]="reToma"
+            type="number"
+            class="form-control"
+            placeholder="ResistenciaE"
+            aria-label="ResistenciaE"
+            aria-describedby="addon-wrapping"
+          />
         </div>
       </div>
 
       <div class="mb-3">
         <div class="input-group flex-nowrap">
-          <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCC</span>
-          <input [(ngModel)]="vcc" type="number" class="form-control" placeholder="VoltajeCC" aria-label="VoltajeCC"
-            aria-describedby="addon-wrapping" />
+          <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+            >VCC</span
+          >
+          <input
+            [(ngModel)]="vcc"
+            type="number"
+            class="form-control"
+            placeholder="VoltajeCC"
+            aria-label="VoltajeCC"
+            aria-describedby="addon-wrapping"
+          />
         </div>
       </div>
       <div class="input-group mb-3">
@@ -38,32 +78,93 @@
           <option value="1">TIP41C</option>
           <option value="2">PRUEBA</option>
         </select>
-        <label class="input-group-text text-light bg-dark" for="inputGroupSelect02">Transistor</label>
+        <label
+          class="input-group-text text-light bg-dark"
+          for="inputGroupSelect02"
+          >Transistor</label
+        >
       </div>
       <div class="mb-3">
-        <label for="">Agregar mas datos (por si no se tienen las resistencias): </label>
+        <label for=""
+          >Agregar mas datos (por si no se tienen las resistencias):
+        </label>
         <div class="mb-3">
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text text-light bg-dark" id="addon-wrapping">VCEQ</span>
-            <input [(ngModel)]="VCEQ" type="number" class="form-control" placeholder="ResistenciaE"
-              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text text-light bg-dark"
+              id="addon-wrapping"
+              >VCEQ</span
+            >
+            <input
+              [(ngModel)]="VCEQToma"
+              type="number"
+              class="form-control"
+              placeholder="ResistenciaE"
+              aria-label="ResistenciaE"
+              aria-describedby="addon-wrapping"
+            />
+            <span
+              class="input-group-text text-light bg-dark"
+              id="addon-wrapping"
+              >IcQ</span
+            >
+            <input
+              [(ngModel)]="IcQToma"
+              type="number"
+              class="form-control"
+              placeholder="ResistenciaE"
+              aria-label="ResistenciaE"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text text-light bg-dark"
+              id="addon-wrapping"
+              >IbQ (en micro)</span
+            >
+            <input
+              [(ngModel)]="IbQToma"
+              type="number"
+              class="form-control"
+              placeholder="ResistenciaE"
+              aria-label="ResistenciaE"
+              aria-describedby="addon-wrapping"
+            />
+            <span
+              class="input-group-text text-light bg-dark"
+              id="addon-wrapping"
+              >VC</span
+            >
+            <input
+              [(ngModel)]="VCToma"
+              type="number"
+              class="form-control"
+              placeholder="ResistenciaE"
+              aria-label="ResistenciaE"
+              aria-describedby="addon-wrapping"
+            />
           </div>
         </div>
         <div class="mb-3">
           <div class="input-group flex-nowrap">
-            <span class="input-group-text text-light bg-dark" id="addon-wrapping">IcQ</span>
-            <input [(ngModel)]="IcQ" type="number" class="form-control" placeholder="ResistenciaE"
-              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
+            <span
+              class="input-group-text text-light bg-dark"
+              id="addon-wrapping"
+              >VE</span
+            >
+            <input
+              [(ngModel)]="VEToma"
+              type="number"
+              class="form-control"
+              placeholder="ResistenciaE"
+              aria-label="ResistenciaE"
+              aria-describedby="addon-wrapping"
+            />
           </div>
         </div>
-        <div class="mb-3">
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text text-light bg-dark" id="addon-wrapping">VE</span>
-            <input [(ngModel)]="VE" type="number" class="form-control" placeholder="ResistenciaE"
-              aria-label="ResistenciaE" aria-describedby="addon-wrapping" />
-          </div>
-        </div>
-
       </div>
       <div class="d-grid gap-2">
         <button type="button" (click)="calcular()" class="btn btn-success btn-lg">
@@ -86,19 +187,25 @@
               <div class="card-body">
                 <h3 class="card-title">{{transistorSelec.nombre}}</h3>
                 <h5 class="card-text">Beta: {{transistorSelec.beta}}</h5>
+                <h5 class="card-text">
+                  Máximo VCE: {{transistorSelec.maxVCE}} V
+                </h5>
+                <h5 class="card-text">
+                  Máxima Ic: {{transistorSelec.maxIc}} A
+                </h5>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-6 resultados" *ngIf="resultado">
       <h1 style="text-align: center;">Resultados</h1>
       <div class="mb-3">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" colspan="5" style="text-align: center;">
+              <th scope="col" colspan="6" style="text-align: center;">
                 <h5>Resistencias</h5>
               </th>
             </tr>
@@ -120,7 +227,6 @@
               <td>{{(re/1000).toFixed(3) +" kΩ"}}</td>
               <th scope="row">{{(ICSat*1000).toFixed(3)+" mA" }}</th>
             </tr>
-
           </tbody>
         </table>
         <table class="table">
@@ -152,7 +258,6 @@
               <td>{{VB.toFixed(3)+ " V"}}</td>
               <td>{{VE.toFixed(3)+ " V"}}</td>
             </tr>
-
           </tbody>
         </table>
       </div>
@@ -188,7 +293,6 @@
                 <td>{{VBAprox.toFixed(3)+ " V"}}</td>
                 <td>{{VEAprox.toFixed(3)+ " V"}}</td>
               </tr>
-
             </tbody>
           </table>
         </div>
@@ -198,6 +302,13 @@
             No se puede aplicar metodo de aproximacion!
           </div>
         </ng-template>
+      </div>
+    </div>
+
+    <div class="col-6 resultados" *ngIf="!resultado && mensaje">
+      <div class="alert alert-danger" *ngIf="calculado" role="alert">
+        No se puede hacer el calculo, IcSat es mayor que la Ic del transistor, o
+        VCE es mayor que VCE del transistor!
       </div>
     </div>
   </div>
