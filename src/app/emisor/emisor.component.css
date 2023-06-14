@@ -9,9 +9,11 @@
     max-width: 550px;
 }
 .vcc {
+    width: 100%;
     display: flex;
     align-items: center;
     margin-left: 5px;
+    justify-content: space-around;
 }
 .VRI{
     display: flex;

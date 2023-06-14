@@ -11,6 +11,8 @@ export class EmisorComponent implements OnInit {
 
   total: number = 0;
 
+  resultados: boolean = false;
+
   Brb: boolean = false;
   Brc: boolean = false;
   Bre: boolean = false;
@@ -26,6 +28,7 @@ export class EmisorComponent implements OnInit {
   Bvcc: boolean = false;
   Bvce: boolean = false;
   BB: boolean = false;
+  Bisat: boolean = false;
 
   rb: number = 0;
   rc: number = 0;
@@ -42,6 +45,10 @@ export class EmisorComponent implements OnInit {
   vcc: number = 0;
   vce: number = 0;
   B: number = 0;
+  isat: number = 0;
+
+  maxVCE: number = 0;
+  maxIC: number = 0;
   constructor(private fb: FormBuilder) {
     this.calcular = this.fb.group({
       rb: ['', Validators.required],
@@ -56,18 +63,26 @@ export class EmisorComponent implements OnInit {
       vcc: ['', Validators.required],
       vce: ['', Validators.required],
       B: ['', Validators.required],
+      tip: ['', Validators.required],
+      mps: ['', Validators.required],
     })
   }
   ngOnInit() {
+    this.copiaInit();
+  }
+
+  copiaInit() {
     var noControls = Object.keys(this.calcular.controls).length;
     var controls = Object.keys(this.calcular.controls);
-    for (let i = 0; i < noControls; i++) {
+    for (let i = 0; i < noControls - 2; i++) {
       this.calcular.get(controls[i])?.disable();
     }
+    this.cambiaT(100, 40, 0.6);
+    this.resultados = false;
   }
 
   resistencias() {
-    this.total = 0;
+    this.total = 1;
 
     this.Brb = false;
     this.Brc = false;
@@ -80,9 +95,8 @@ export class EmisorComponent implements OnInit {
     this.Bie = false;
     this.Bvcc = false;
     this.Bvce = false;
-    this.BB = false;
     var v = this.calcular.value;
-    this.total = Object.keys(v).length;
+    this.total += Object.keys(v).length;
     console.log(this.calcular.value)
 
     if (v.rb != undefined) {
@@ -135,12 +149,10 @@ export class EmisorComponent implements OnInit {
       this.Bvce = true;
       this.vce = v.vce;
     }
-    if (v.B != undefined) {
-      this.BB = true;
-      this.B = v.B;
-    }
 
     this.recursiva(1);
+
+    this.resultados = true;
 
     console.log("fin: " + this.total);
 
@@ -162,6 +174,11 @@ export class EmisorComponent implements OnInit {
   }
 
   recursiva(cont: number) {
+    if (this.Bvce && this.vce > this.maxVCE) {
+      return;
+    } else if (this.Bic && this.ic > this.maxIC) {
+      return;
+    }
     cont++;
     // 1 B
     if (!this.BB) {
@@ -323,8 +340,16 @@ export class EmisorComponent implements OnInit {
         this.total++;
       }
     }
+    //13
+    if (!this.Bisat) {
+      if (this.Bvcc && this.Brc && this.Bre) {
+        this.isat = this.vcc / (this.rc + this.re);
+        this.Bisat = true;
+        this.total++;
+      }
+    }
 
-    if (this.total < 12)
+    if (this.total < 13)
       this.recursiva(cont);
   }
 
@@ -334,5 +359,19 @@ export class EmisorComponent implements OnInit {
     } else {
       this.calcular.get(cual)?.enable();
     }
+  }
+
+  cambiaT(beta: number, maxVCE: number, maxIC: number) {
+    var labelb = document.getElementById("beta");
+    if (labelb != undefined) {
+      labelb.innerHTML = '&beta; = ' + beta;
+    }
+    this.BB = true;
+    this.B = beta;
+    this.maxIC = maxIC;
+    this.maxVCE = maxVCE;
+  }
+  relo() {
+    location.reload();
   }
 }
