@@ -161,7 +161,9 @@
                     </div>
                 </div>
             </div>
-
+            <div class="alert alert-danger" role="alert" *ngIf="valoresAltos">
+                valor de VCE o Ic fuera de rango!
+            </div>
             <div class="d-grid gap-2 mb-3">
                 <button class="btn btn-primary btn-lg" type="submit">Calcular</button>
             </div>
