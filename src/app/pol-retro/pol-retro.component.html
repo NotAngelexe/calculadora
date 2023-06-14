@@ -1,38 +1,39 @@
 <div class="login-box">
     <h2>Retro Alimentacion</h2>
-    <form>
+    <form (ngSubmit)="calcula(formTemplate)" #formTemplate="ngForm" >
         <div class="user-box">
-          <input type="text" name="" required="">
+          <input type="text" name="VCC" [(ngModel)]="resistencias.vcc" required="">
           <label>VCC</label>
         </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="RB" [(ngModel)]="resistencias.Rb" required="">
         <label>Resitencia Base</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="RC" [(ngModel)]="resistencias.Rc" required="">
         <label>Resistencia Colector</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="RE" [(ngModel)]="resistencias.Re" required="">
         <label>Resistencia Emisor</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="" placeholder="         Si no hay beta, dejar en 0">
+        <input type="text" name="beta" [(ngModel)]="resistencias.beta" #beta="ngModel" required="" placeholder="         Si no hay beta, dejar en 0">
         <label>Beta</label>
+        <div *ngIf="beta.value"></div>
       </div>
 
 
       <section>
       <div>
-        <input type="radio" id="control_01" name="select" value="1" checked>
+        <input type="radio" id="control_01" name="select" ngModel value="1" checked>
         <label for="control_01" class="label">
           <h5>TIP41C</h5>
           <p></p>
         </label>
       </div>
       <div>
-        <input type="radio" id="control_02" name="select" value="2">
+        <input type="radio" id="control_02" name="select" ngModel value="2">
         <label for="control_02" class="label">
           <h5>MBS2222</h5>
           <p></p>
@@ -40,12 +41,15 @@
       </div>
       </section>
 
+
       <a href="#">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        Calcular
+        <button type="submit" class="btnS">
+            CALCULAR
+        </button>
       </a>
 
     </form>
