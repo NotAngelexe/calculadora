@@ -1,5 +1,6 @@
 <div class="login-box">
     <h2>Retro Alimentacion</h2>
+    <p>las resistencias estan en K ohm</p>
     <form (ngSubmit)="calcula(formTemplate)" #formTemplate="ngForm" >
         <div class="user-box">
           <input type="text" name="VCC" [(ngModel)]="resistencias.vcc" required="">
@@ -18,9 +19,8 @@
         <label>Resistencia Emisor</label>
       </div>
       <div class="user-box">
-        <input type="text" name="beta" [(ngModel)]="resistencias.beta" #beta="ngModel" required="" placeholder="         Si no hay beta, dejar en 0">
+        <input type="text" name="Beta" [(ngModel)]="resistencias.Beta" required="" placeholder="         Si no hay beta, dejar en 0">
         <label>Beta</label>
-        <div *ngIf="beta.value"></div>
       </div>
 
 
