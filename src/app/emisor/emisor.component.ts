@@ -1,4 +1,3 @@
-import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -69,7 +68,6 @@ export class EmisorComponent implements OnInit {
 
   resistencias() {
     this.total = 0;
-
 
     this.Brb = false;
     this.Brc = false;
@@ -161,12 +159,10 @@ export class EmisorComponent implements OnInit {
     console.log("vcc: " + this.vcc);
     console.log("vce: " + this.vce);
     console.log("B: " + this.B);
-
   }
 
   recursiva(cont: number) {
     cont++;
-    // console.log(cont++);
     // 1 B
     if (!this.BB) {
       if (this.Bic && this.Bib && this.ib != 0) {
@@ -185,8 +181,6 @@ export class EmisorComponent implements OnInit {
         this.ib = this.ic / this.B;
         this.Bib = true;
         this.total++;
-        console.log(this.ib)
-        console.log(cont)
       } else if (this.Bvb && this.Brb && this.rb != 0) {
         this.ib = this.vb / this.rb;
         this.Bib = true;
@@ -199,8 +193,6 @@ export class EmisorComponent implements OnInit {
         this.ib = (this.vcc - 0.7) / (this.rb + ((this.B + 1) * this.re));
         this.Bib = true;
         this.total++;
-        console.log(this.ib)
-        console.log(cont)
       }
     }
     // 3 corriente ic
@@ -209,8 +201,6 @@ export class EmisorComponent implements OnInit {
         this.ic = this.B * this.ib;
         this.Bic = true;
         this.total++;
-        console.log(this.ic)
-        console.log(cont)
       } else if (this.Bvc && this.Brc && this.rc != 0) {
         this.ic = this.vc / this.rc;
         this.Bic = true;
@@ -223,8 +213,6 @@ export class EmisorComponent implements OnInit {
         this.ie = this.ib + this.ic;
         this.Bie = true;
         this.total++;
-        console.log(this.ie)
-        console.log(cont)
       } else if (this.Bve && this.Bre && this.re != 0) {
         this.ie = this.ve / this.re;
         this.Bie = true;
@@ -241,14 +229,10 @@ export class EmisorComponent implements OnInit {
         this.vce = this.vc - this.ve;
         this.Bvce = true;
         this.total++;
-        console.log(this.vce)
-        console.log(cont)
       } else if (this.Bvcc && this.Bic && this.Brc && this.Bre) {
         this.vce = this.vcc - this.ic * (this.rc + this.re);
         this.Bvce = true;
         this.total++;
-        console.log(this.vce)
-        console.log(cont)
       }
     }
     // 6 voltaje vb
@@ -257,14 +241,10 @@ export class EmisorComponent implements OnInit {
         this.vb = this.vcc - (this.ib * this.rb);
         this.Bvb = true;
         this.total++;
-        console.log(this.vb)
-        console.log(cont)
       } else if (this.Bve) {
         this.vb = 0.7 + this.ve;
         this.Bvb = true;
         this.total++;
-        console.log(this.vb)
-        console.log(cont)
       }
     }
     // 7 voltaje vc
@@ -273,8 +253,6 @@ export class EmisorComponent implements OnInit {
         this.vc = this.vcc - (this.rc * this.ic);
         this.Bvc = true;
         this.total++;
-        console.log(this.vc)
-        console.log(cont)
       } else if (this.Bve && this.Bvce) {
         this.vc = this.ve + this.vce;
         this.Bve = true;
@@ -287,8 +265,6 @@ export class EmisorComponent implements OnInit {
         this.ve = this.vb - 0.7;
         this.Bve = true;
         this.total++;
-        console.log(this.ve)
-        console.log(cont)
       } else if (this.Bvce && this.Bvc) {
         this.ve = this.vc - this.vce;
         this.Bve = true;
@@ -321,8 +297,6 @@ export class EmisorComponent implements OnInit {
         this.rb = (this.vcc - this.vb) / this.ib;
         this.Brb = true;
         this.total++;
-        console.log(this.rb)
-        console.log(cont)
       }
     }
     // 11 resistencia rc
@@ -331,8 +305,6 @@ export class EmisorComponent implements OnInit {
         this.rc = (this.vcc - this.vc) / this.ic;
         this.Brc = true;
         this.total++;
-        console.log(this.rc)
-        console.log(cont)
       } else if (this.Bvcc && this.Bvce && this.Bic && this.Bre) {
         this.rc = ((this.vcc - this.vce) / this.ic) - this.re;
         this.Brc = true;
@@ -345,18 +317,12 @@ export class EmisorComponent implements OnInit {
         this.re = this.ve / this.ie;
         this.Bre = true;
         this.total++;
-        console.log(this.re)
-        console.log(cont)
       } else if (this.Bvcc && this.Bvce && this.Bic && this.Brc) {
         this.re = ((this.vcc - this.vce) / this.ic) - this.rc;
         this.Bre = true;
         this.total++;
-
       }
     }
-
-
-
 
     if (this.total < 12)
       this.recursiva(cont);
