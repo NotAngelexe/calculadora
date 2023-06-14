@@ -10,12 +10,19 @@ import { NgForm } from '@angular/forms';
 export class PolRetroComponent implements OnInit {
 
   resistencias: any = {
-    Rb:  null,
-    Rc: null,
-    Re: null,
+    RB:  null,
+    RC: null,
+    RE: null,
     beta: null,
     vcc: null
   };
+
+  Rb: number=0;
+  Rc: number=0;
+  rbT: number=0;
+  rcT: number=0;
+  vcc: number=0;
+  
 
   constructor() {
   }
@@ -25,8 +32,14 @@ export class PolRetroComponent implements OnInit {
 
   calcula(form: NgForm) {
     console.log("EnviandoDatos...");
-    console.log(form);
-    console.log(form.value);
+    
+    this.Rb=form.value.RB;
+    if(console.log(this.Rb)===null){
+      console.log("No envia nada :/")
+    }else{
+      console.log("Ya envia datos");
+    }
+    
   }
 }
 
