@@ -1,1 +1,240 @@
-<p>pol-fija works!</p>
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-6">
+        <h1 style="text-align: center;">Polarizacion Fija</h1>
+        <!-- formulario aqui -->
+  
+      
+        <div class="mb-3">
+          <div class="input-group mb-3">
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+              >Rb</span
+            >
+            <input
+              type="number"
+              [(ngModel)]="rbT"
+              class="form-control"
+              placeholder="ResistenciaC"
+              aria-label="ResistenciaC"
+              aria-describedby="addon-wrapping"
+            />
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+              >RC</span
+            >
+            <input
+              type="number"
+              [(ngModel)]="rcT"
+              class="form-control"
+              placeholder="ResistenciaC"
+              aria-label="ResistenciaC"
+              aria-describedby="addon-wrapping"
+            />
+            
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text text-light bg-dark" id="addon-wrapping"
+              >VCC</span
+            >
+            <input
+              [(ngModel)]="vcc"
+              type="number"
+              class="form-control"
+              placeholder="VoltajeCC"
+              aria-label="VoltajeCC"
+              aria-describedby="addon-wrapping"
+            />
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-select" [(ngModel)]="Selec" id="inputGroupSelect02">
+            <option value="0">MPS2222A</option>
+            <option value="1">TIP41C</option>
+            <option value="2">PRUEBA</option>
+          </select>
+          <label
+            class="input-group-text text-light bg-dark"
+            for="inputGroupSelect02"
+            >Transistor</label
+          >
+        </div>
+        <div class="mb-3">
+          <label for=""
+            >Agregar mas datos (por si no se tienen las resistencias):
+          </label>
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <span
+                class="input-group-text text-light bg-dark"
+                id="addon-wrapping"
+                >VCEQ</span
+              >
+              <input
+                [(ngModel)]="VCEQToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+              <span
+                class="input-group-text text-light bg-dark"
+                id="addon-wrapping"
+                >IcQ</span
+              >
+              <input
+                [(ngModel)]="IcQToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+              <span
+                class="input-group-text text-light bg-dark"
+                id="addon-wrapping"
+                >IeQ</span
+              >
+              <input
+                [(ngModel)]="IeQToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <span
+                class="input-group-text text-light bg-dark"
+                id="addon-wrapping"
+                >IbQ (en micro)</span
+              >
+              <input
+                [(ngModel)]="IbQToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+              <span
+                class="input-group-text text-light bg-dark"
+                id="addon-wrapping"
+                >VC</span
+              >
+              <input
+                [(ngModel)]="VCToma"
+                type="number"
+                class="form-control"
+                placeholder="ResistenciaE"
+                aria-label="ResistenciaE"
+                aria-describedby="addon-wrapping"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button type="button" (click)="resultados()" class="btn btn-success btn-lg">
+            Resultados
+          </button>
+          <button type="button" (click)="borrar()" class="btn btn-danger btn-lg">
+            Borrar
+          </button>
+        </div>
+  
+        <br />
+        <br />
+        <div class="mb-3" *ngIf="calculado">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="transistorSelec.imagen" class="img-fluid rounded-start" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">{{transistorSelec.nombre}}</h3>
+                  <h5 class="card-text">Beta: {{transistorSelec.beta}}</h5>
+                  <h5 class="card-text">
+                    Máximo VCE: {{transistorSelec.maxVCE}} V
+                  </h5>
+                  <h5 class="card-text">
+                    Máxima Ic: {{transistorSelec.maxIc}} A
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 resultados" *ngIf="resultado">
+        <h1 style="text-align: center;">Resultados</h1>
+        <div class="mb-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" colspan="6" style="text-align: center;">
+                  <h5>Resistencias</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">RB</th>
+                <th scope="col">RC</th>
+                <th scope="col">ICSat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Resultado</th>
+                <td>{{(Rb/1000).toFixed(3) +" kΩ"}}</td>
+                <td>{{(Rc/1000).toFixed(3) +" kΩ"}}</td>
+                <th scope="row">{{(ICSat*1000).toFixed(3)+" mA" }}</th>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" colspan="8" style="text-align: center;">
+                  <h5>Corrientes y voltajes</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">IbQ</th>
+                <th scope="col">IcQ</th>
+                <th scope="col">IeQ</th>
+                <th scope="col">VCE</th>
+                <th scope="col">VC</th>
+                <th scope="col">VB</th>
+                <th scope="col">VE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Resultado</th>
+                <td>{{(IbQ*1000000).toFixed(3)+" µA"}}</td>
+                <td>{{(IcQ*1000).toFixed(3)+" mA" }}</td>
+                <td>{{(IeQ*1000).toFixed(3)+" mA" }}</td>
+                <td>{{VCEQ.toFixed(3) + " V"}}</td>
+                <td>{{VC.toFixed(3)+ " V"}}</td>
+                <td>{{VB.toFixed(3)+ " V"}}</td>
+                <td>{{VE.toFixed(3)+ " V"}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-6 resultados" *ngIf="!resultado && mensaje">
+        <div class="alert alert-danger" *ngIf="calculado" role="alert">
+          No se puede hacer el calculo, IcSat es mayor que la Ic del transistor, o
+          VCE es mayor que VCE del transistor!
+        </div>
+      </div>
+    </div>
+  </div>
