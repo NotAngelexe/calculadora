@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgTemplateOutlet } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // import { Console } from 'console';
@@ -78,7 +78,10 @@ export class PolRetroComponent implements OnInit {
       console.log("Ya envia datos");
     }
 
-    
+    if(this.tran===1){
+      if(this.vcc>40){
+      }
+    }
     //calculando IB
     if(this.beta===null || this.beta===0){
       this.aux = this.vcc-0.7;
@@ -100,16 +103,16 @@ export class PolRetroComponent implements OnInit {
       console.log("Corriente C", this.Ic);
     }
     //Calculado VB
-    this.Vb=(this.Ib)*(this.Rb);
-    console.log("Voltaje en b", this.Vb);
+    this.Vb=(this.Ib*this.Rb)/1000;
     //Calculando VRC
     this.Vrc=(this.Ic)*(this.Rc);
-    console.log("voltaje rc", this.Vrc)
-    console.log("Voltaje en c", this.Vrc);
     //Calculando IE
     this.Ie=this.Ib+this.Ic;
     console.log("Corriente en e", this.Ie);
+    //calculando ve
+    this.Ve=(this.Ie*this.Rc)/1000;
     //calculando vce
+    this.Vrc= this.Vrc/1000;
     this.Vce= this.vcc-this.Vrc;
     console.log("Voltaje vce",this.Vce)
   }
